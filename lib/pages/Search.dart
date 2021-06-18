@@ -12,10 +12,11 @@ class SearchPage extends StatefulWidget {
 }
 
 bool show = false;
+bool showbutton = false;
 bool found = false;
 
 class _SearchPageState extends State<SearchPage> {
-  final TextEditingController _filter = new TextEditingController();
+  TextEditingController _filter = new TextEditingController();
   List names = [];
   List filteredNames;
   List res = [];
@@ -35,14 +36,16 @@ class _SearchPageState extends State<SearchPage> {
                   padding: const EdgeInsets.only(top: 80, left: 20, right: 30),
                   child: TextField(
                     onChanged: (_filter) {
-                      setState(() {
-                        _getNames(_filter);
-                        if (_filter.isEmpty) {
-                          show = false;
-                        } else {
+                      if (_filter.isEmpty) {
+                        setState(() {
+                          showbutton = false;
+                        });
+                      } else {
+                        setState(() {
+                          showbutton = true;
                           _getNames(_filter);
-                        }
-                      });
+                        });
+                      }
                     },
                     controller: _filter,
                     style: GoogleFonts.nunito(
@@ -61,19 +64,18 @@ class _SearchPageState extends State<SearchPage> {
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
                       ),
-                      suffixIcon: show
-                          ? IconButton(
+                      suffixIcon: showbutton == false
+                          ? Icon(Icons.search)
+                          : IconButton(
                               icon: Icon(Icons.cancel),
                               onPressed: () {
                                 setState(() {
                                   _filter.clear();
+                                  showbutton = false;
                                   show = false;
+                                  found = false;
                                 });
                               },
-                            )
-                          : IconButton(
-                              icon: Icon(Icons.search),
-                              onPressed: () {},
                             ),
                     ),
                   ),
@@ -118,23 +120,24 @@ class _SearchPageState extends State<SearchPage> {
         ele = ele.toLowerCase();
 
         if (ele.contains(name)) {
-          res.add(ele);
           setState(() {
+            res.add(ele);
+            print(res);
             check = 1;
           });
-        } else {
-          check = 0;
         }
       }
+      print(check);
       if (check == 1) {
         setState(() {
           show = true;
           found = true;
+          print('im here!');
         });
       } else {
         setState(() {
-          show = false;
           found = false;
+          print('im here too!');
         });
       }
     }
@@ -142,14 +145,12 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget showscreen() {
     Widget out;
-    if (show) {
-      if (found) {
-        out = _buildlist();
-      } else {
-        out = Notfound();
-      }
-    } else if (show == false) {
+    if (show == true && found == true) {
+      out = _buildlist();
+    } else if (show == false && found == false) {
       out = Search_something();
+    } else {
+      out = Notfound();
     }
     return out;
   }

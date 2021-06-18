@@ -27,9 +27,9 @@ class _NavPageState extends State<NavPage> {
         animationFactor: 0.5,
 
         style: FluidNavBarStyle(
-          barBackgroundColor: Colors.redAccent,
-          iconBackgroundColor: Colors.white,
-          iconSelectedForegroundColor: Color.fromRGBO(232, 38, 86, 1),
+          barBackgroundColor: Colors.greenAccent,
+          iconBackgroundColor: Colors.white54,
+          iconSelectedForegroundColor: Colors.white,
           iconUnselectedForegroundColor: Color.fromRGBO(16, 16, 16, 1),
         ),
 

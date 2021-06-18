@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:elemental/Components/Data.dart';
+import 'package:random_color/random_color.dart';
 
 class TablePage extends StatefulWidget {
   @override
@@ -35,6 +36,8 @@ class Elements extends StatefulWidget {
 }
 
 class _ElementsState extends State<Elements> {
+  RandomColor _randomColor = RandomColor();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +62,9 @@ class _ElementsState extends State<Elements> {
                       children: List.generate(
                         period.period.length,
                         (index) {
+                          Color _color = _randomColor.randomColor(
+                              colorHue: ColorHue.green,
+                              colorBrightness: ColorBrightness.light);
                           return Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: InkWell(
@@ -67,7 +73,7 @@ class _ElementsState extends State<Elements> {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(250, 184, 178, 1),
+                                  color: _color,
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(20.0),
                                   ),
