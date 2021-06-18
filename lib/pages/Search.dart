@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:elemental/Components/Data.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,30 +12,13 @@ class SearchPage extends StatefulWidget {
 }
 
 bool show = false;
-bool found = true;
+bool found = false;
 
 class _SearchPageState extends State<SearchPage> {
   final TextEditingController _filter = new TextEditingController();
-  String _searchText = "";
   List names = [];
   List filteredNames;
   List res = [];
-  Icon _searchIcon = new Icon(Icons.search);
-
-  _SearchPageState() {
-    _filter.addListener(() {
-      if (_filter.text.isEmpty) {
-        setState(() {
-          _searchText = "";
-          filteredNames = names;
-        });
-      } else {
-        setState(() {
-          _searchText = _filter.text;
-        });
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +40,7 @@ class _SearchPageState extends State<SearchPage> {
                         if (_filter.isEmpty) {
                           show = false;
                         } else {
-                          show = true;
+                          _getNames(_filter);
                         }
                       });
                     },
@@ -103,33 +87,7 @@ class _SearchPageState extends State<SearchPage> {
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 1.4,
-                child: show
-                    ? found
-                        ? _buildlist()
-                        : Notfound()
-                    : Center(
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 50,
-                            ),
-                            SizedBox(
-                              width: 300,
-                              height: 300,
-                              child: Lottie.asset('assets/search.json'),
-                            ),
-                            Text(
-                              'Search something...',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.nunito(
-                                fontSize: 30,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white60,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                child: showscreen(),
               ),
             ],
           ),
@@ -139,42 +97,61 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void _getNames(String name) async {
-    String periodicUrl = "https://periodic-table-api.herokuapp.com/";
-    var data = await http.get(Uri.parse(periodicUrl));
-    var period;
-    period = json.decode(data.body);
-    setState(() {
-      res = [];
-      for (int i = 0; i < 118; i++) {
-        var temp = period[i]['name'].toString();
-        names.add(temp);
-      }
-
+    int check = 0;
+    if (name.length == 0) {
+      setState(() {
+        show = false;
+      });
+    } else {
+      Period period = new Period();
+      var data = period.period;
+      setState(() {
+        res = [];
+        for (int i = 0; i < 118; i++) {
+          var temp = data[i]['name'].toString();
+          names.add(temp);
+        }
+      });
       for (int i = 0; i < 118; i++) {
         String ele = '';
         ele = names[i];
         ele = ele.toLowerCase();
+
         if (ele.contains(name)) {
+          res.add(ele);
           setState(() {
-            res.add(ele);
-            found = true;
+            check = 1;
           });
         } else {
-          setState(() {
-            found = false;
-          });
+          check = 0;
         }
       }
-      if (found) {
+      if (check == 1) {
         setState(() {
           show = true;
+          found = true;
         });
       } else {
         setState(() {
           show = false;
+          found = false;
         });
       }
-    });
+    }
+  }
+
+  Widget showscreen() {
+    Widget out;
+    if (show) {
+      if (found) {
+        out = _buildlist();
+      } else {
+        out = Notfound();
+      }
+    } else if (show == false) {
+      out = Search_something();
+    }
+    return out;
   }
 
   Widget _buildlist() {
@@ -215,11 +192,40 @@ class _SearchPageState extends State<SearchPage> {
   }
 }
 
-class Notfound extends StatelessWidget {
-  const Notfound({
+class Search_something extends StatelessWidget {
+  const Search_something({
     Key key,
   }) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: [
+          SizedBox(
+            height: 50,
+          ),
+          SizedBox(
+            width: 300,
+            height: 300,
+            child: Lottie.asset('assets/search.json'),
+          ),
+          Text(
+            'Search something...',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.nunito(
+              fontSize: 30,
+              fontWeight: FontWeight.w600,
+              color: Colors.white60,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Notfound extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(

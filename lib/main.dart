@@ -1,8 +1,5 @@
-import 'dart:ui';
 import 'package:elemental/Splash.dart';
-import 'package:elemental/pages/Nav.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 void main() {
   runApp(MyApp());
