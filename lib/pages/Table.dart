@@ -1,3 +1,4 @@
+import 'package:elemental/pages/Element.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:elemental/Components/Data.dart';
@@ -70,6 +71,13 @@ class _ElementsState extends State<Elements> {
                             child: InkWell(
                               onTap: () {
                                 print(index + 1);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ElementPage(
+                                            atomicnum: index,
+                                          )),
+                                );
                               },
                               child: Container(
                                 decoration: BoxDecoration(

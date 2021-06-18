@@ -33,6 +33,7 @@ dependencies:
   dio: ^4.0.0
   lottie: ^1.0.1
   random_color: ^1.0.5
+  flutter_cube: ^0.1.1
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +53,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/Models/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
