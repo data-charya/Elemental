@@ -1,3 +1,4 @@
+import 'package:elemental/pages/About.dart';
 import 'package:elemental/pages/Home.dart';
 import 'package:elemental/pages/Search.dart';
 import 'package:elemental/pages/Table.dart';
@@ -57,7 +58,7 @@ class _NavPageState extends State<NavPage> {
           _child = TablePage();
           break;
         case 3:
-          _child = HomePage();
+          _child = About();
           break;
       }
       _child = AnimatedSwitcher(

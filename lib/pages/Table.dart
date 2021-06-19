@@ -63,6 +63,8 @@ class _ElementsState extends State<Elements> {
                       children: List.generate(
                         period.period.length,
                         (index) {
+                          Period p = new Period();
+                          var sym = p.period[index]['symbol'];
                           Color _color = _randomColor.randomColor(
                               colorHue: ColorHue.green,
                               colorBrightness: ColorBrightness.light);
@@ -70,13 +72,14 @@ class _ElementsState extends State<Elements> {
                             padding: const EdgeInsets.all(10.0),
                             child: InkWell(
                               onTap: () {
-                                print(index + 1);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ElementPage(
-                                            atomicnum: index,
-                                          )),
+                                    builder: (context) => ElementPage(
+                                      atomicnum: index,
+                                      symbol: sym,
+                                    ),
+                                  ),
                                 );
                               },
                               child: Container(

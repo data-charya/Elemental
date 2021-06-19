@@ -3,19 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_cube/flutter_cube.dart';
 
-class ElementPage extends StatelessWidget {
+class ElementPage extends StatefulWidget {
   final int atomicnum;
-  const ElementPage({Key key, @required this.atomicnum}) : super(key: key);
+  final String symbol;
+  const ElementPage({Key key, @required this.atomicnum, @required this.symbol})
+      : super(key: key);
 
+  @override
+  _ElementPageState createState() => _ElementPageState();
+}
+
+var number;
+
+class _ElementPageState extends State<ElementPage> {
   @override
   Widget build(BuildContext context) {
     Period p = new Period();
-    var data = p.period;
-    var mass = data[atomicnum]['atomicMass'].toString();
 
+    var data = p.period;
+    setState(() {
+      number = widget.atomicnum.toInt();
+    });
+
+    var mass = data[widget.atomicnum]['atomicMass'].toString();
     mass = mass.substring(0, 3);
 
-    print(atomicnum);
     return Scaffold(
       backgroundColor: Color.fromRGBO(16, 16, 16, 1),
       body: ListView(
@@ -36,7 +48,7 @@ class ElementPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  data[atomicnum]['name'],
+                  data[widget.atomicnum]['name'],
                   style: GoogleFonts.nunito(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
@@ -53,7 +65,8 @@ class ElementPage extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Sideinfo(data: data, atomicnum: atomicnum, mass: mass)
+                    Sideinfo(
+                        data: data, atomicnum: widget.atomicnum, mass: mass)
                   ],
                 ),
                 Padding(
@@ -64,6 +77,26 @@ class ElementPage extends StatelessWidget {
                         child: Viewer(),
                       ),
                     ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 80),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 600,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -94,7 +127,7 @@ class Sideinfo extends StatelessWidget {
       height: 600,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white70,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(30),
             bottomRight: Radius.circular(30),
@@ -104,6 +137,7 @@ class Sideinfo extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
                 children: [
@@ -122,7 +156,7 @@ class Sideinfo extends StatelessWidget {
                               data[atomicnum]['symbol'],
                               style: GoogleFonts.nunito(
                                 fontSize: 30,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w800,
                                 color: Colors.black,
                               ),
                             ),
@@ -133,7 +167,7 @@ class Sideinfo extends StatelessWidget {
                         'Atomic Symbol',
                         style: GoogleFonts.nunito(
                           fontSize: 12,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w800,
                           color: Colors.black,
                         ),
                       ),
@@ -169,7 +203,7 @@ class Sideinfo extends StatelessWidget {
                         'Atomic Mass',
                         style: GoogleFonts.nunito(
                           fontSize: 12,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w800,
                           color: Colors.black,
                         ),
                       ),
@@ -205,7 +239,7 @@ class Sideinfo extends StatelessWidget {
                         'Electronegativity',
                         style: GoogleFonts.nunito(
                           fontSize: 12,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w800,
                           color: Colors.black,
                         ),
                       ),
@@ -241,7 +275,7 @@ class Sideinfo extends StatelessWidget {
                         'Year Discovered',
                         style: GoogleFonts.nunito(
                           fontSize: 12,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w800,
                           color: Colors.black,
                         ),
                       ),
@@ -258,15 +292,24 @@ class Sideinfo extends StatelessWidget {
 }
 
 class Viewer extends StatefulWidget {
+  var nu;
   @override
   _ViewerState createState() => _ViewerState();
 }
 
 class _ViewerState extends State<Viewer> {
   Object cube;
+  String symbol;
   @override
   void initState() {
-    cube = Object(fileName: "assets/Models/fe.obj");
+    Period p = new Period();
+    var d = p.period;
+    String symbol;
+    setState(() {
+      symbol = d[number]['symbol'].toString();
+    });
+    print(number);
+    cube = Object(fileName: "assets/Models/${symbol}.obj");
     cube.rotation.setValues(-30, -120, 40);
     cube.updateTransform();
     super.initState();
