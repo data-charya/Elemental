@@ -11,9 +11,9 @@ class SearchPage extends StatefulWidget {
 bool show = false;
 bool showbutton = false;
 bool found = false;
+TextEditingController _filter = new TextEditingController();
 
 class _SearchPageState extends State<SearchPage> {
-  TextEditingController _filter = new TextEditingController();
   List names = [];
   List filteredNames;
   List res = [];
@@ -33,9 +33,10 @@ class _SearchPageState extends State<SearchPage> {
                   padding: const EdgeInsets.only(top: 80, left: 20, right: 30),
                   child: TextField(
                     onChanged: (_filter) {
-                      if (_filter.isEmpty) {
+                      if (_filter.length == 0) {
                         setState(() {
                           showbutton = false;
+                          _filter = '';
                         });
                       } else {
                         setState(() {

@@ -305,8 +305,19 @@ class _ViewerState extends State<Viewer> {
     Period p = new Period();
     var d = p.period;
     String symbol;
+
     setState(() {
-      symbol = d[number]['symbol'].toString();
+      if (d[number]['symbol'] == 'Ar' ||
+          d[number]['symbol'] == 'Ne' ||
+          d[number]['symbol'] == 'He' ||
+          d[number]['symbol'] == 'Kr' ||
+          d[number]['symbol'] == 'Xe' ||
+          d[number]['symbol'] == 'Rn' ||
+          d[number]['symbol'] == 'Og') {
+        symbol = 'H';
+      } else {
+        symbol = d[number]['symbol'].toString();
+      }
     });
     print(number);
     cube = Object(fileName: "assets/Models/${symbol}.obj");
