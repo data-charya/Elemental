@@ -58,7 +58,8 @@ class _HomePageState extends State<HomePage> {
                     'Feeling curious ?',
                     style: GoogleFonts.nunito(
                       fontSize: 30,
-                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white70,
                     ),
                   ),
                 ),
@@ -67,7 +68,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: 580,
+            height: MediaQuery.of(context).size.height / 1.3,
             child: Container(
               child: ListView.builder(
                 scrollDirection: Axis.vertical,
