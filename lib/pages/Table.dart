@@ -41,6 +41,7 @@ class _ElementsState extends State<Elements> {
 
   @override
   Widget build(BuildContext context) {
+    var responsive = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(
         children: [
@@ -54,99 +55,193 @@ class _ElementsState extends State<Elements> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 30),
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10.0,
-                      mainAxisSpacing: 10.0,
-                      shrinkWrap: true,
-                      key: UniqueKey(),
-                      children: List.generate(
-                        period.period.length,
-                        (index) {
-                          Period p = new Period();
-                          var sym = p.period[index]['symbol'];
-                          Color _color = _randomColor.randomColor(
-                              colorHue: ColorHue.green,
-                              colorBrightness: ColorBrightness.light);
-                          return Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ElementPage(
-                                      atomicnum: index,
-                                      symbol: sym,
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: _color,
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20.0),
-                                  ),
-                                ),
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 20, vertical: 5),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                    child: responsive.width > 720
+                        ? GridView.count(
+                            crossAxisCount: 4,
+                            crossAxisSpacing: 10.0,
+                            mainAxisSpacing: 10.0,
+                            shrinkWrap: true,
+                            key: UniqueKey(),
+                            children: List.generate(
+                              period.period.length,
+                              (index) {
+                                Period p = new Period();
+                                var sym = p.period[index]['symbol'];
+                                Color _color = _randomColor.randomColor(
+                                    colorHue: ColorHue.green,
+                                    colorBrightness: ColorBrightness.light);
+                                return Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => ElementPage(
+                                            atomicnum: index,
+                                            symbol: sym,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: _color,
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(20.0),
+                                        ),
+                                      ),
+                                      child: Column(
                                         children: [
-                                          Text(
-                                            data[index]['atomicNumber'],
-                                            style: GoogleFonts.nunito(
-                                              fontSize: 25,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 20, vertical: 5),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  data[index]['atomicNumber'],
+                                                  style: GoogleFonts.nunito(
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Center(
+                                                child: Text(
+                                                  data[index]['symbol'],
+                                                  style: GoogleFonts.nunito(
+                                                    fontSize: 40,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                data[index]['name'],
+                                                style: GoogleFonts.nunito(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Center(
-                                          child: Text(
-                                            data[index]['symbol'],
-                                            style: GoogleFonts.nunito(
-                                              fontSize: 40,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,
+                                  ),
+                                );
+                              },
+                            ),
+                          )
+                        : GridView.count(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10.0,
+                            mainAxisSpacing: 10.0,
+                            shrinkWrap: true,
+                            key: UniqueKey(),
+                            children: List.generate(
+                              period.period.length,
+                              (index) {
+                                Period p = new Period();
+                                var sym = p.period[index]['symbol'];
+                                Color _color = _randomColor.randomColor(
+                                    colorHue: ColorHue.green,
+                                    colorBrightness: ColorBrightness.light);
+                                return Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => ElementPage(
+                                            atomicnum: index,
+                                            symbol: sym,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: _color,
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(20.0),
+                                        ),
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 20, vertical: 5),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  data[index]['atomicNumber'],
+                                                  style: GoogleFonts.nunito(
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          data[index]['name'],
-                                          style: GoogleFonts.nunito(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Center(
+                                                child: Text(
+                                                  data[index]['symbol'],
+                                                  style: GoogleFonts.nunito(
+                                                    fontSize: 40,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                      ],
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                data[index]['name'],
+                                                style: GoogleFonts.nunito(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ],
-                                ),
-                              ),
+                                  ),
+                                );
+                              },
                             ),
-                          );
-                        },
-                      ),
-                    ),
+                          ),
                   ),
                 ),
               ],

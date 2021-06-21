@@ -26,21 +26,19 @@ class _NavPageState extends State<NavPage> {
       backgroundColor: Color.fromRGBO(16, 16, 16, 1),
       bottomNavigationBar: FluidNavBar(
         animationFactor: 0.5,
-
         style: FluidNavBarStyle(
           barBackgroundColor: Colors.greenAccent,
           iconBackgroundColor: Colors.white54,
           iconSelectedForegroundColor: Colors.white,
           iconUnselectedForegroundColor: Color.fromRGBO(16, 16, 16, 1),
         ),
-
         icons: [
           FluidNavBarIcon(icon: Icons.home),
           FluidNavBarIcon(icon: Icons.search),
-          FluidNavBarIcon(icon: Icons.tab),
-          FluidNavBarIcon(icon: Icons.settings),
+          FluidNavBarIcon(icon: Icons.stream),
+          FluidNavBarIcon(icon: Icons.code_rounded),
         ],
-        onChange: _handleNavigationChange, // (4)
+        onChange: _handleNavigationChange,
       ),
     );
   }
