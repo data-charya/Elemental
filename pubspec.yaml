@@ -34,6 +34,7 @@ dependencies:
   lottie: ^1.0.1
   random_color: ^1.0.5
   flutter_cube: ^0.1.1
+  url_launcher: ^6.0.6
 
 dev_dependencies:
   flutter_test:
