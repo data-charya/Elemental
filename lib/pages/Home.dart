@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                               textAlign: TextAlign.center,
                               style: GoogleFonts.nunito(
                                 fontSize: 15,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w800,
                                 color: Colors.black87,
                               ),
                             ),
