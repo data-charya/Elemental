@@ -53,7 +53,7 @@ class _SearchPageState extends State<SearchPage> {
                       } else {
                         setState(() {
                           showbutton = true;
-                          _getNames(_filter);
+                          _getNames(_filter.toLowerCase());
                         });
                       }
                     },
