@@ -1,4 +1,7 @@
 import 'package:elemental/Components/Data.dart';
+import 'package:elemental/Components/elementno.dart';
+import 'package:elemental/pages/Element.dart';
+import 'package:elemental/pages/Table.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -154,6 +157,9 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget _buildlist() {
+    int atnum;
+    elementno elno = elementno();
+    var n = elno.element;
     return ListView.builder(
       key: UniqueKey(),
       itemCount: res.length,
@@ -162,7 +168,21 @@ class _SearchPageState extends State<SearchPage> {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: GestureDetector(
             onTap: () {
-              print(res[index]);
+              setState(() {
+                atnum = int.parse(n[res[index].substring(0, 1).toUpperCase() +
+                    res[index].substring(1)]);
+                print(atnum);
+                atnum -= 1;
+                print(atnum);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ElementPage(
+                      atomicnum: atnum,
+                    ),
+                  ),
+                );
+              });
             },
             child: Container(
               width: MediaQuery.of(context).size.width / 1.1,
@@ -171,15 +191,17 @@ class _SearchPageState extends State<SearchPage> {
                 color: Colors.lightGreenAccent,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),
-                child: Text(
-                  res[index],
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.nunito(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 30),
+                  child: Text(
+                    res[index],
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.nunito(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ),

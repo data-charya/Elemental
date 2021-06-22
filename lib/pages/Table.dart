@@ -79,7 +79,6 @@ class _ElementsState extends State<Elements> {
                                         MaterialPageRoute(
                                           builder: (context) => ElementPage(
                                             atomicnum: index,
-                                            symbol: sym,
                                           ),
                                         ),
                                       );
@@ -172,7 +171,6 @@ class _ElementsState extends State<Elements> {
                                         MaterialPageRoute(
                                           builder: (context) => ElementPage(
                                             atomicnum: index,
-                                            symbol: sym,
                                           ),
                                         ),
                                       );

@@ -5,9 +5,7 @@ import 'package:flutter_cube/flutter_cube.dart';
 
 class ElementPage extends StatefulWidget {
   final int atomicnum;
-  final String symbol;
-  const ElementPage({Key key, @required this.atomicnum, @required this.symbol})
-      : super(key: key);
+  const ElementPage({Key key, @required this.atomicnum}) : super(key: key);
 
   @override
   _ElementPageState createState() => _ElementPageState();
