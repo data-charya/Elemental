@@ -20,6 +20,15 @@ class _SearchPageState extends State<SearchPage> {
   List names = [];
   List filteredNames;
   List res = [];
+  @override
+  void initState() {
+    setState(() {
+      _filter.clear();
+      show = false;
+      found = false;
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -195,7 +204,8 @@ class _SearchPageState extends State<SearchPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: Text(
-                    res[index],
+                    res[index].substring(0, 1).toUpperCase() +
+                        res[index].substring(1),
                     textAlign: TextAlign.center,
                     style: GoogleFonts.nunito(
                       fontSize: 30,
