@@ -235,7 +235,7 @@ class _AboutState extends State<About> {
                           onTap: () {
                             String url = 'https://www.instagram.com/swo._.osh/';
                             launch(url,
-                                forceSafariVC: true, forceWebView: true);
+                                forceSafariVC: true, forceWebView: false);
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -265,7 +265,7 @@ class _AboutState extends State<About> {
                             String url =
                                 'https://www.linkedin.com/in/shanwill-pinto-b286b7184/';
                             launch(url,
-                                forceSafariVC: true, forceWebView: true);
+                                forceSafariVC: true, forceWebView: false);
                           },
                           child: Container(
                             decoration: BoxDecoration(
