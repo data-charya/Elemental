@@ -197,22 +197,48 @@ class _SearchPageState extends State<SearchPage> {
               width: MediaQuery.of(context).size.width / 1.1,
               height: 130,
               decoration: BoxDecoration(
-                color: Colors.lightGreenAccent,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 30),
-                  child: Text(
-                    res[index].substring(0, 1).toUpperCase() +
-                        res[index].substring(1),
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.nunito(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 30),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            res[index].substring(0, 1).toUpperCase() +
+                                res[index].substring(1),
+                            style: GoogleFonts.nunito(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Text(
+                            'Tap to know more',
+                            style: GoogleFonts.nunito(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black45,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Center(child: Lottie.asset('assets/atom.json')),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
