@@ -71,8 +71,8 @@ class _SearchPageState extends State<SearchPage> {
                       hintText: 'Search element ..',
                       hintStyle: GoogleFonts.nunito(
                         fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.black54,
                       ),
                       suffixIcon: showbutton == false
                           ? Icon(Icons.search)
@@ -132,22 +132,18 @@ class _SearchPageState extends State<SearchPage> {
         if (ele.contains(name)) {
           setState(() {
             res.add(ele);
-            print(res);
             check = 1;
           });
         }
       }
-      print(check);
       if (check == 1) {
         setState(() {
           show = true;
           found = true;
-          print('im here!');
         });
       } else {
         setState(() {
           found = false;
-          print('im here too!');
         });
       }
     }
@@ -180,9 +176,7 @@ class _SearchPageState extends State<SearchPage> {
               setState(() {
                 atnum = int.parse(n[res[index].substring(0, 1).toUpperCase() +
                     res[index].substring(1)]);
-                print(atnum);
                 atnum -= 1;
-                print(atnum);
                 Navigator.push(
                   context,
                   MaterialPageRoute(

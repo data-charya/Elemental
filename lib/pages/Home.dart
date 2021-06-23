@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     getdata();
-    print(f.length);
     super.initState();
   }
 
@@ -72,9 +71,6 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.vertical,
                 itemCount: f.length,
                 itemBuilder: (context, index) {
-                  Color _color = _randomColor.randomColor(
-                      colorHue: ColorHue.green,
-                      colorBrightness: ColorBrightness.light);
                   return SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Padding(
@@ -82,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                           horizontal: 20, vertical: 10),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: _color,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Center(

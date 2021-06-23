@@ -14,20 +14,24 @@ class _AboutState extends State<About> {
       backgroundColor: Color.fromRGBO(16, 16, 16, 1),
       body: ListView(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'About the Dev',
-                style: GoogleFonts.nunito(
-                    fontSize: 30,
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'About the Dev',
+                  style: GoogleFonts.nunito(
+                    fontSize: 40,
                     color: Colors.white,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
           ),
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -324,9 +328,15 @@ class _AboutState extends State<About> {
                                   ),
                                   SizedBox(
                                     width: 200,
-                                    height: 50,
+                                    height: 70,
                                     child: GestureDetector(
-                                      onTap: () {},
+                                      onTap: () {
+                                        String url =
+                                            'https://shanwillpinto.tech';
+                                        launch(url,
+                                            forceSafariVC: true,
+                                            forceWebView: false);
+                                      },
                                       child: Container(
                                         decoration: BoxDecoration(
                                           color: Colors.purpleAccent,
@@ -334,13 +344,16 @@ class _AboutState extends State<About> {
                                               BorderRadius.circular(20),
                                         ),
                                         child: Center(
-                                          child: Text(
-                                            'Share your experience',
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.nunito(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.white,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              'Tap here for more Flutter goodness',
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.nunito(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
+                                              ),
                                             ),
                                           ),
                                         ),

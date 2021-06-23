@@ -546,10 +546,10 @@ class _ViewerState extends State<Viewer> {
         symbol = d[number]['symbol'].toString();
       }
     });
-    print(number);
     cube = Object(fileName: "assets/Models/${symbol}.obj");
     cube.rotation.setValues(-30, -120, 40);
     cube.updateTransform();
+
     super.initState();
   }
 
