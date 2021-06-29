@@ -1,7 +1,6 @@
 import 'package:elemental/Components/Data.dart';
 import 'package:elemental/Components/elementno.dart';
 import 'package:elemental/pages/Element.dart';
-import 'package:elemental/pages/Table.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';

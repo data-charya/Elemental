@@ -211,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${co}" + ' m3',
+                                "$co" + ' m3',
                                 textAlign: TextAlign.end,
                                 style: GoogleFonts.nunito(
                                   fontSize: 20,
@@ -259,7 +259,7 @@ class _HomePageState extends State<HomePage> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${h}" + ' m3',
+                                "$h" + ' m3',
                                 textAlign: TextAlign.end,
                                 style: GoogleFonts.nunito(
                                   fontSize: 20,
@@ -315,7 +315,7 @@ class _HomePageState extends State<HomePage> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${no2}" + ' m3',
+                                "$no2" + ' m3',
                                 textAlign: TextAlign.end,
                                 style: GoogleFonts.nunito(
                                   fontSize: 20,
@@ -363,7 +363,7 @@ class _HomePageState extends State<HomePage> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "${so2}" + ' m3',
+                                "$so2" + ' m3',
                                 textAlign: TextAlign.end,
                                 style: GoogleFonts.nunito(
                                   fontSize: 20,

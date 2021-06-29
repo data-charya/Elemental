@@ -546,7 +546,7 @@ class _ViewerState extends State<Viewer> {
         symbol = d[number]['symbol'].toString();
       }
     });
-    cube = Object(fileName: "assets/Models/${symbol}.obj");
+    cube = Object(fileName: "assets/Models/$symbol.obj");
     cube.rotation.setValues(-30, -120, 40);
     cube.updateTransform();
 

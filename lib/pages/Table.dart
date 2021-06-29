@@ -65,8 +65,6 @@ class _ElementsState extends State<Elements> {
                             children: List.generate(
                               period.period.length,
                               (index) {
-                                Period p = new Period();
-                                var sym = p.period[index]['symbol'];
                                 Color _color = _randomColor.randomColor(
                                     colorHue: ColorHue.green,
                                     colorBrightness: ColorBrightness.light);
@@ -157,8 +155,6 @@ class _ElementsState extends State<Elements> {
                             children: List.generate(
                               period.period.length,
                               (index) {
-                                Period p = new Period();
-                                var sym = p.period[index]['symbol'];
                                 Color _color = _randomColor.randomColor(
                                     colorHue: ColorHue.green,
                                     colorBrightness: ColorBrightness.light);
