@@ -440,7 +440,7 @@ class _HomePageState extends State<HomePage> {
                                     style: GoogleFonts.nunito(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w800,
-                                      color: Colors.black,
+                                      color: Colors.black87,
                                     ),
                                   ),
                                 ),
