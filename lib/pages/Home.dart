@@ -20,6 +20,9 @@ var f;
 var link;
 var text;
 bool aqistatus = false;
+List factlist = [];
+List linklist = [];
+final len = ValueNotifier<int>(0);
 
 class _HomePageState extends State<HomePage> {
   getfacts() async {
@@ -27,6 +30,13 @@ class _HomePageState extends State<HomePage> {
     var info = await http.get(Uri.parse(url));
 
     f = json.decode(info.body);
+    for (int i = 0; i < f['Element_data'].length; i++) {
+      factlist.add(f['Element_data'][i]['info']);
+      linklist.add(f['Element_data'][i]['content']);
+    }
+    setState(() {
+      len.value = f['Element_data'].length;
+    });
   }
 
   getdata() async {
@@ -131,7 +141,7 @@ class _HomePageState extends State<HomePage> {
               height: 150,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Colors.grey[850],
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Center(
@@ -152,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                               style: GoogleFonts.nunito(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.black,
+                                color: Colors.white,
                               ),
                             ),
                           ],
@@ -408,95 +418,134 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 30),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: 600,
-              child: ListView.builder(
-                  itemCount: 14,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 10),
-                      child: SizedBox(
-                        width: 300,
-                        height: 200,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
+          ValueListenableBuilder(
+            valueListenable: len,
+            builder: (context, value, widget) {
+              if (len.value == 0) {
+                return Center(
+                  child: SizedBox(
+                    width: 200,
+                    height: 200,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: Lottie.asset('assets/loading.json'),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 15),
-                                child: SizedBox(
-                                  width: 140,
-                                  child: Text(
-                                    f['Element_data'][index]['info'],
-                                    style: GoogleFonts.nunito(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w800,
-                                      color: Colors.black87,
-                                    ),
-                                  ),
+                          Text(
+                            'Loading',
+                            style: GoogleFonts.nunito(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black45,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              } else {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: 600,
+                    child: ListView.builder(
+                        itemCount: factlist.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10),
+                            child: SizedBox(
+                              width: 300,
+                              height: 200,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: SizedBox(
-                                  width: 160,
-                                  height: 160,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      border: Border.all(
-                                          color: Colors.blue, width: 5),
-                                      color: Colors.black,
-                                      // image: DecorationImage(
-                                      //   image: NetworkImage(
-                                      //     f['Element_data'][index]['content'],
-                                      //   ),
-                                      // ),
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(15),
-                                      child: Image.network(
-                                        f['Element_data'][index]['content'],
-                                        loadingBuilder: (BuildContext context,
-                                            Widget child,
-                                            ImageChunkEvent loadingProgress) {
-                                          if (loadingProgress == null)
-                                            return child;
-                                          return Center(
-                                            child: CircularProgressIndicator(
-                                              value: loadingProgress
-                                                          .expectedTotalBytes !=
-                                                      null
-                                                  ? loadingProgress
-                                                          .cumulativeBytesLoaded /
-                                                      loadingProgress
-                                                          .expectedTotalBytes
-                                                  : null,
-                                            ),
-                                          );
-                                        },
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15),
+                                      child: SizedBox(
+                                        width: 140,
+                                        child: Text(
+                                          factlist[index],
+                                          style: GoogleFonts.nunito(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w800,
+                                            color: Colors.black87,
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      child: SizedBox(
+                                        width: 160,
+                                        height: 160,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            border: Border.all(
+                                                color: Colors.blue, width: 5),
+                                            color: Colors.black,
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            child: Image.network(
+                                              linklist[index],
+                                              loadingBuilder:
+                                                  (BuildContext context,
+                                                      Widget child,
+                                                      ImageChunkEvent
+                                                          loadingProgress) {
+                                                if (loadingProgress == null)
+                                                  return child;
+                                                return Center(
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    value: loadingProgress
+                                                                .expectedTotalBytes !=
+                                                            null
+                                                        ? loadingProgress
+                                                                .cumulativeBytesLoaded /
+                                                            loadingProgress
+                                                                .expectedTotalBytes
+                                                        : null,
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-            ),
+                            ),
+                          );
+                        }),
+                  ),
+                );
+              }
+            },
           ),
         ],
       ),
