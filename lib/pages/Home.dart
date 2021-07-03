@@ -174,8 +174,8 @@ class _HomePageState extends State<HomePage> {
                             value: aqiperc, // Defaults to 0.5.
                             valueColor: AlwaysStoppedAnimation(
                                 _color), // Defaults to the current Theme's accentColor.
-                            backgroundColor: Colors
-                                .white, // Defaults to the current Theme's backgroundColor.
+                            backgroundColor: Colors.grey[
+                                850], // Defaults to the current Theme's backgroundColor.
                             borderColor: aqistatus == true
                                 ? border
                                 : border = Color.fromRGBO(39, 174, 96, 1),
@@ -187,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                               style: GoogleFonts.nunito(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w800,
-                                color: Colors.black54,
+                                color: Colors.white70,
                               ),
                             ),
                           ),

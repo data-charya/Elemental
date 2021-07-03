@@ -13,6 +13,7 @@ class ElementPage extends StatefulWidget {
 }
 
 var number;
+bool touch = false;
 
 class _ElementPageState extends State<ElementPage> {
   @override
@@ -555,15 +556,52 @@ class _ViewerState extends State<Viewer> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 250,
-      height: 250,
-      child: Container(
-        child: Cube(
-          onSceneCreated: (Scene scene) {
-            scene.world.add(cube);
-            scene.camera.zoom = 8;
-          },
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          touch = true;
+        });
+      },
+      child: SizedBox(
+        width: 250,
+        height: 250,
+        child: Container(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              SizedBox(height: 20),
+              Cube(
+                onSceneCreated: (Scene scene) {
+                  scene.world.add(cube);
+                  scene.camera.zoom = 8;
+                },
+              ),
+              touch == false
+                  ? SizedBox(
+                      width: 200,
+                      height: 30,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Tap and drag to interact',
+                            style: GoogleFonts.nunito(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  : SizedBox(
+                      width: 10,
+                    ),
+            ],
+          ),
         ),
       ),
     );
