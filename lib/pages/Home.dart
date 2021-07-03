@@ -33,6 +33,8 @@ class _HomePageState extends State<HomePage> {
     for (int i = 0; i < f['Element_data'].length; i++) {
       factlist.add(f['Element_data'][i]['info']);
       linklist.add(f['Element_data'][i]['content']);
+      factlist = factlist.reversed.toList();
+      linklist = linklist.reversed.toList();
     }
     setState(() {
       len.value = f['Element_data'].length;
@@ -486,7 +488,7 @@ class _HomePageState extends State<HomePage> {
                                           style: GoogleFonts.nunito(
                                             fontSize: 15,
                                             fontWeight: FontWeight.w800,
-                                            color: Colors.black87,
+                                            color: Colors.black54,
                                           ),
                                         ),
                                       ),
