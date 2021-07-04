@@ -1,5 +1,4 @@
-<center><img src="https://res.cloudinary.com/vigneshshettyin/image/upload/v1625403186/fbidxh8eo2e7d5pkamc9.png"></center>
-<hr>
+<center><img src="https://res.cloudinary.com/vigneshshettyin/image/upload/v1625406997/a9l5iiz6qmzmhsf9vbiy.png"></center>
 
 <div align="center">
 
@@ -13,7 +12,7 @@
 
 <br>
 
-> Experience the elements in 3D.
+> A flutter app which gives you a 3d visualisation of the 118 elements of the periodic table.
 
 
 
