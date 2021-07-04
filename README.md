@@ -1,4 +1,6 @@
-<center><img src="https://res.cloudinary.com/vigneshshettyin/image/upload/v1625406997/a9l5iiz6qmzmhsf9vbiy.png"></center>
+<div align="center">
+  <img src="https://res.cloudinary.com/vigneshshettyin/image/upload/v1625406997/a9l5iiz6qmzmhsf9vbiy.png">
+</div>
 
 <div align="center">
 
