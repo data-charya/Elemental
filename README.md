@@ -39,7 +39,7 @@ git clone https://github.com/data-charya/Elemental.git
 ```
   ##### Move to the desired folder
 ```bash
-cd \Elemental
+cd Elemental
 ```
   ##### To install the dependencies, simply write
 ```bash
