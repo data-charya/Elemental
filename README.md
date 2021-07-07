@@ -51,8 +51,12 @@ flutter pub get
 ```bash
 flutter run lib/main.dart
 ```
+<hr>
 
-# My System 
-![Sys](https://img.shields.io/badge/Windows-ASUS_TUF_A15-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+## Resources 
+- <a href="https://flutter.dev/" target="_blank">Flutter</a>
+- <a href="https://pub.dev/" target="_blank">Packages for flutter</a>
+
+<hr>
 
 ## Made with 💙 by <a href="https://github.com/data-charya"> Shanwill Pinto </a>
