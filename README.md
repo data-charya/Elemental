@@ -52,5 +52,7 @@ flutter pub get
 flutter run lib/main.dart
 ```
 
+# My System 
+![Sys](https://img.shields.io/badge/Windows-ASUS_TUF_A15-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
 ## Made with 💙 by <a href="https://github.com/data-charya"> Shanwill Pinto </a>
