@@ -54,8 +54,8 @@ flutter run lib/main.dart
 <hr>
 
 ## Resources 
-- <a href="https://flutter.dev/" target="_blank">Flutter</a>
-- <a href="https://pub.dev/" target="_blank">Packages for flutter</a>
+- <a href="https://flutter.dev/" target=_blank>Flutter</a>
+- <a href="https://pub.dev/" target=_blank>Packages for flutter</a>
 
 <hr>
 
