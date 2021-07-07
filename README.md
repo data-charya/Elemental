@@ -26,10 +26,11 @@ https://user-images.githubusercontent.com/62848565/124614909-5e15a380-de92-11eb-
 ## How it all began
 
 It all started with a small idea to provide students a visual aid to know the elements. The logo is inspired from the structure of an atom. The app aims to get students closer to the elements by giving them an upclose view of all the 118 elements of the periodic table. 
-<!--<img src="https://user-images.githubusercontent.com/62848565/124616875-14c65380-de94-11eb-80a8-aa73a4e25ad5.png" width=100% height ="1000px">-->
-![App Icons](https://user-images.githubusercontent.com/62848565/124617404-87cfca00-de94-11eb-848d-80eb18c7c7ed.png)
 
 <br>
+
+![1](https://user-images.githubusercontent.com/62848565/124788842-5ecc3980-df67-11eb-9597-6c3638cb583e.png)
+
 
 ## Setup
 
