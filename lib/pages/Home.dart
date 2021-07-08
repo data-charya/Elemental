@@ -70,20 +70,25 @@ class _HomePageState extends State<HomePage> {
     } else if (aqi > 100 && aqi <= 150) {
       setState(() {
         _color = Color.fromRGBO(230, 126, 34, 1); //orange
+        border = Color.fromRGBO(255, 121, 18, 1);
         aqistatus = true;
       });
     } else if (aqi > 150 && aqi <= 200) {
       setState(() {
         _color = Color.fromRGBO(229, 57, 53, 1); //red
+        border = Color.fromRGBO(227, 32, 27, 1);
         aqistatus = true;
       });
     } else if (aqi > 200 && aqi <= 300) {
       setState(() {
         _color = Color.fromRGBO(187, 143, 206, 1); //purple
+        border = Color.fromRGBO(172, 49, 224, 1);
+        aqistatus = true;
       });
     } else {
       setState(() {
         _color = Color.fromRGBO(144, 12, 63, 1); //maroon
+        border = Color.fromRGBO(171, 5, 69, 1);
         aqistatus = true;
       });
     }
