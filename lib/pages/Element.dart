@@ -27,7 +27,7 @@ class _ElementPageState extends State<ElementPage> {
 
     var mass = data[widget.atomicnum]['atomicMass'].toString();
     mass = mass.substring(0, 3);
-
+    var responsive = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color.fromRGBO(16, 16, 16, 1),
       body: ListView(
@@ -69,16 +69,27 @@ class _ElementPageState extends State<ElementPage> {
                         data: data, atomicnum: widget.atomicnum, mass: mass)
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Viewer(),
+                responsive.width > 760
+                    ? Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Column(
+                          children: [
+                            Center(
+                              child: Viewer(),
+                            ),
+                          ],
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: Column(
+                          children: [
+                            Center(
+                              child: ViewerDesk(),
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
-                ),
               ],
             ),
           ),
@@ -570,6 +581,95 @@ class _ViewerState extends State<Viewer> {
             alignment: Alignment.center,
             children: [
               SizedBox(height: 20),
+              Cube(
+                onSceneCreated: (Scene scene) {
+                  scene.world.add(cube);
+                  scene.camera.zoom = 8;
+                },
+              ),
+              touch == false
+                  ? SizedBox(
+                      width: 200,
+                      height: 30,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Tap and drag to interact',
+                            style: GoogleFonts.nunito(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  : SizedBox(
+                      width: 10,
+                    ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ViewerDesk extends StatefulWidget {
+  var nu;
+  @override
+  _ViewerState createState() => _ViewerState();
+}
+
+class _ViewerDeskState extends State<Viewer> {
+  Object cube;
+  String symbol;
+  @override
+  void initState() {
+    Period p = new Period();
+    var d = p.period;
+    String symbol;
+
+    setState(() {
+      if (d[number]['symbol'] == 'Ar' ||
+          d[number]['symbol'] == 'Ne' ||
+          d[number]['symbol'] == 'He' ||
+          d[number]['symbol'] == 'Kr' ||
+          d[number]['symbol'] == 'Xe' ||
+          d[number]['symbol'] == 'Rn' ||
+          d[number]['symbol'] == 'Og') {
+        symbol = 'H';
+      } else {
+        symbol = d[number]['symbol'].toString();
+      }
+    });
+    cube = Object(fileName: "assets/Models/$symbol.obj");
+    cube.rotation.setValues(-30, -120, 40);
+    cube.updateTransform();
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          touch = true;
+        });
+      },
+      child: SizedBox(
+        width: 350,
+        height: 350,
+        child: Container(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              SizedBox(width: 200),
               Cube(
                 onSceneCreated: (Scene scene) {
                   scene.world.add(cube);
