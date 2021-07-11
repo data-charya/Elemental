@@ -16,7 +16,7 @@
 
 </div>
 
-A flutter app which gives you a 3d visualisation of the 118 elements of the periodic table.
+A flutter app which takes you on a 3d visualisation of the 118 elements of the periodic table.
 <br>
 <br>
 
