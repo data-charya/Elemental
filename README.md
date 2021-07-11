@@ -6,7 +6,8 @@
 
 <br />
 
-![GitHub license](https://img.shields.io/badge/Flutter%20ver.-2.2.2-9cf?style=for-the-badge&logo=flutter)
+![flutter](https://img.shields.io/badge/Flutter%20ver.-2.2.2-blue?style=for-the-badge&logo=flutter)
+[![website](https://img.shields.io/badge/Website-online-green?style=for-the-badge&logo=chrome)](https://elementalapp.netlify.app/#/)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&logo=appveyor)](https://github.com/data-charya/Elemental/blob/master/LICENSE)
 [![Flutter action](https://github.com/data-charya/Elemental/actions/workflows/flutter.yml/badge.svg?style=for-the-badge?branch=master)](https://github.com/data-charya/Elemental/actions/workflows/flutter.yml)
 
