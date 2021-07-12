@@ -115,17 +115,17 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
+                          horizontal: 90, vertical: 20),
                       child: Container(
                         width: MediaQuery.of(context).size.width / 1.5,
-                        height: 70,
+                        height: 100,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               'Feeling curious ?',
                               style: GoogleFonts.nunito(
-                                fontSize: 30,
+                                fontSize: 40,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white70,
                               ),
@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                             Text(
                               'Check out todays chemical presence in the air',
                               style: GoogleFonts.nunito(
-                                fontSize: 12,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white54,
                               ),
@@ -145,277 +145,291 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(vertical: 40),
                   child: SizedBox(
-                    width: MediaQuery.of(context).size.width / 1.5,
-                    height: 150,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[850],
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                children: [
-                                  SizedBox(
-                                    width: 100,
-                                    child: Lottie.asset('assets/aqi.json'),
-                                  ),
-                                  Text(
-                                    "AQI ",
-                                    textAlign: TextAlign.end,
-                                    style: GoogleFonts.nunito(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                width: 100,
-                                height: 100,
-                                child: LiquidCircularProgressIndicator(
-                                  value: aqiperc, // Defaults to 0.5.
-                                  valueColor: AlwaysStoppedAnimation(
-                                      _color), // Defaults to the current Theme's accentColor.
-                                  backgroundColor: Colors.grey[
-                                      850], // Defaults to the current Theme's backgroundColor.
-                                  borderColor: aqistatus == true
-                                      ? border
-                                      : border = Color.fromRGBO(39, 174, 96, 1),
-                                  borderWidth: 5.0,
-                                  direction: Axis
-                                      .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-                                  center: Text(
-                                    aqi.toString(),
-                                    style: GoogleFonts.nunito(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w800,
-                                      color: Colors.white70,
+                    width: responsive.width,
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: SizedBox(
+                              width: 400,
+                              height: 170,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[850],
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                child: Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            SizedBox(
+                                              width: 100,
+                                              child: Lottie.asset(
+                                                  'assets/aqi.json'),
+                                            ),
+                                            Text(
+                                              "AQI ",
+                                              textAlign: TextAlign.end,
+                                              style: GoogleFonts.nunito(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: 100,
+                                          height: 100,
+                                          child:
+                                              LiquidCircularProgressIndicator(
+                                            value: aqiperc, // Defaults to 0.5.
+                                            valueColor: AlwaysStoppedAnimation(
+                                                _color), // Defaults to the current Theme's accentColor.
+                                            backgroundColor: Colors.grey[
+                                                850], // Defaults to the current Theme's backgroundColor.
+                                            borderColor: aqistatus == true
+                                                ? border
+                                                : border = Color.fromRGBO(
+                                                    39, 174, 96, 1),
+                                            borderWidth: 5.0,
+                                            direction: Axis
+                                                .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+                                            center: Text(
+                                              aqi.toString(),
+                                              style: GoogleFonts.nunito(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w800,
+                                                color: Colors.white70,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
+                          SizedBox(
+                            width: 180,
+                            height: 170,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "$co" + ' m3',
+                                          textAlign: TextAlign.end,
+                                          style: GoogleFonts.nunito(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'CO',
+                                          style: GoogleFonts.nunito(
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.w800,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 180,
+                            height: 170,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "$h" + ' m3',
+                                          textAlign: TextAlign.end,
+                                          style: GoogleFonts.nunito(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'H',
+                                          style: GoogleFonts.nunito(
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.w800,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 180,
+                            height: 170,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.blue[300],
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "$no2" + ' m3',
+                                          textAlign: TextAlign.end,
+                                          style: GoogleFonts.nunito(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'NO2',
+                                          style: GoogleFonts.nunito(
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.w800,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 180,
+                            height: 170,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.tealAccent[100],
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "$so2" + ' m3',
+                                          textAlign: TextAlign.end,
+                                          style: GoogleFonts.nunito(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'SO2',
+                                          style: GoogleFonts.nunito(
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.w800,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 40),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      SizedBox(
-                        width: 180,
-                        height: 170,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "$co" + ' m3',
-                                      textAlign: TextAlign.end,
-                                      style: GoogleFonts.nunito(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'CO',
-                                      style: GoogleFonts.nunito(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.w800,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 180,
-                        height: 170,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.amber,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "$h" + ' m3',
-                                      textAlign: TextAlign.end,
-                                      style: GoogleFonts.nunito(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'H',
-                                      style: GoogleFonts.nunito(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.w800,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 180,
-                        height: 170,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.blue[300],
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "$no2" + ' m3',
-                                      textAlign: TextAlign.end,
-                                      style: GoogleFonts.nunito(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'NO2',
-                                      style: GoogleFonts.nunito(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.w800,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 180,
-                        height: 170,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.tealAccent[100],
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "$so2" + ' m3',
-                                      textAlign: TextAlign.end,
-                                      style: GoogleFonts.nunito(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'SO2',
-                                      style: GoogleFonts.nunito(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.w800,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                      const EdgeInsets.symmetric(horizontal: 150, vertical: 20),
                   child: Text(
                     'Wanna know something cool ?',
                     style: GoogleFonts.nunito(

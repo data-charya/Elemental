@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.elemental">
+    package="io.shanwill.elemental">
   <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="elemental"
+        android:label="Elemental"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -31,79 +31,768 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(16, 16, 16, 1),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 5,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 80, left: 20, right: 30),
-                  child: TextField(
-                    onChanged: (_filter) {
-                      if (_filter.length == 0) {
-                        setState(() {
-                          showbutton = false;
-                          _filter = '';
-                        });
-                      } else {
-                        setState(() {
-                          showbutton = true;
-                          _getNames(_filter.toLowerCase());
-                        });
-                      }
-                    },
-                    controller: _filter,
-                    style: GoogleFonts.nunito(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.black45),
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      hintText: 'Search element ..',
-                      hintStyle: GoogleFonts.nunito(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.black54,
-                      ),
-                      suffixIcon: showbutton == false
-                          ? Icon(Icons.search)
-                          : IconButton(
-                              icon: Icon(Icons.cancel),
-                              onPressed: () {
-                                setState(() {
-                                  _filter.clear();
-                                  showbutton = false;
-                                  show = false;
-                                  found = false;
-                                });
+      body: size.width > 760
+          ? Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: 600,
+                    child: Column(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height / 5,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 80, left: 20, right: 30),
+                            child: TextField(
+                              onChanged: (_filter) {
+                                if (_filter.length == 0) {
+                                  setState(() {
+                                    showbutton = false;
+                                    _filter = '';
+                                  });
+                                } else {
+                                  setState(() {
+                                    showbutton = true;
+                                    _getNames(_filter.toLowerCase());
+                                  });
+                                }
                               },
+                              controller: _filter,
+                              style: GoogleFonts.nunito(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.black45),
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                hintText: 'Search element ..',
+                                hintStyle: GoogleFonts.nunito(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.black54,
+                                ),
+                                suffixIcon: showbutton == false
+                                    ? Icon(Icons.search)
+                                    : IconButton(
+                                        icon: Icon(Icons.cancel),
+                                        onPressed: () {
+                                          setState(() {
+                                            _filter.clear();
+                                            showbutton = false;
+                                            show = false;
+                                            found = false;
+                                          });
+                                        },
+                                      ),
+                              ),
                             ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: 500,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 80),
+                            child: showscreen(),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 800,
+                        height: 600,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    SizedBox(
+                                      width: 300,
+                                      height: 600,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          SizedBox(
+                                            width: 300,
+                                            height: 60,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.brown,
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                              ),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      'Alkali Metals',
+                                                      style: GoogleFonts.nunito(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 40,
+                                                      height: 40,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(26),
+                                                          color: Colors.white,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            '6',
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 300,
+                                            height: 60,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.red,
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                              ),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      'Alkaline Earth Metals',
+                                                      style: GoogleFonts.nunito(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 40,
+                                                      height: 40,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(26),
+                                                          color: Colors.white,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            '6',
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 300,
+                                            height: 60,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.pink,
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                              ),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      'Transition Metal',
+                                                      style: GoogleFonts.nunito(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 40,
+                                                      height: 40,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(26),
+                                                          color: Colors.white,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            '31',
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 300,
+                                            height: 60,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.deepPurple,
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                              ),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      'Post-transition Metal',
+                                                      style: GoogleFonts.nunito(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 40,
+                                                      height: 40,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(26),
+                                                          color: Colors.white,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            '12',
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 300,
+                                            height: 60,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.teal,
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                              ),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      'Metalloid',
+                                                      style: GoogleFonts.nunito(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 40,
+                                                      height: 40,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(26),
+                                                          color: Colors.white,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            '6',
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 300,
+                                      height: 600,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          SizedBox(
+                                            width: 300,
+                                            height: 60,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.green[900],
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                              ),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      'Reactive Non-Metal',
+                                                      style: GoogleFonts.nunito(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 40,
+                                                      height: 40,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(26),
+                                                          color: Colors.white,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            '10',
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 300,
+                                            height: 60,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.green,
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                              ),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      'Noble Gas',
+                                                      style: GoogleFonts.nunito(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 40,
+                                                      height: 40,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(26),
+                                                          color: Colors.white,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            '6',
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 300,
+                                            height: 60,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.purple,
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                              ),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      'Lanthanide',
+                                                      style: GoogleFonts.nunito(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 40,
+                                                      height: 40,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(26),
+                                                          color: Colors.white,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            '15',
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 300,
+                                            height: 60,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.red[900],
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                              ),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      'Actinide',
+                                                      style: GoogleFonts.nunito(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 40,
+                                                      height: 40,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(26),
+                                                          color: Colors.white,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            '15',
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 300,
+                                            height: 60,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.grey[700],
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                              ),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      'Unknown',
+                                                      style: GoogleFonts.nunito(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 40,
+                                                      height: 40,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(26),
+                                                          color: Colors.white,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            '10',
+                                                            style: GoogleFonts
+                                                                .nunito(
+                                                              fontSize: 20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color:
+                                                                  Colors.black,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            )
+          : Column(
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height / 5,
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(top: 80, left: 20, right: 30),
+                        child: TextField(
+                          onChanged: (_filter) {
+                            if (_filter.length == 0) {
+                              setState(() {
+                                showbutton = false;
+                                _filter = '';
+                              });
+                            } else {
+                              setState(() {
+                                showbutton = true;
+                                _getNames(_filter.toLowerCase());
+                              });
+                            }
+                          },
+                          controller: _filter,
+                          style: GoogleFonts.nunito(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.black45),
+                          decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            hintText: 'Search element ..',
+                            hintStyle: GoogleFonts.nunito(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.black54,
+                            ),
+                            suffixIcon: showbutton == false
+                                ? Icon(Icons.search)
+                                : IconButton(
+                                    icon: Icon(Icons.cancel),
+                                    onPressed: () {
+                                      setState(() {
+                                        _filter.clear();
+                                        showbutton = false;
+                                        show = false;
+                                        found = false;
+                                      });
+                                    },
+                                  ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 1.4,
-                child: showscreen(),
-              ),
-            ],
-          ),
-        ],
-      ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height / 1.4,
+                      child: showscreen(),
+                    ),
+                  ],
+                ),
+              ],
+            ),
     );
   }
 
@@ -194,44 +883,50 @@ class _SearchPageState extends State<SearchPage> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 30),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            res[index].substring(0, 1).toUpperCase() +
-                                res[index].substring(1),
-                            style: GoogleFonts.nunito(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 30),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                res[index].substring(0, 1).toUpperCase() +
+                                    res[index].substring(1),
+                                style: GoogleFonts.nunito(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Text(
+                                'Tap to know more',
+                                style: GoogleFonts.nunito(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black45,
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            'Tap to know more',
-                            style: GoogleFonts.nunito(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black45,
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: SizedBox(
+                            width: 100,
+                            height: 100,
+                            child:
+                                Center(child: Lottie.asset('assets/atom.json')),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: SizedBox(
-                        width: 100,
-                        height: 100,
-                        child: Center(child: Lottie.asset('assets/atom.json')),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
