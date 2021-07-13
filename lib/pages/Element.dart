@@ -30,47 +30,339 @@ class _ElementPageState extends State<ElementPage> {
     var responsive = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color.fromRGBO(16, 16, 16, 1),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: responsive.width > 760
+          ? ListView(
               children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                    Icons.arrow_back_ios_new,
-                    color: Colors.white60,
-                    size: 30,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_ios_new,
+                          color: Colors.white60,
+                          size: 30,
+                        ),
+                      ),
+                      Text(
+                        data[widget.atomicnum]['name'],
+                        style: GoogleFonts.nunito(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Text(
-                  data[widget.atomicnum]['name'],
-                  style: GoogleFonts.nunito(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Sideinfo(
+                              data: data,
+                              atomicnum: widget.atomicnum,
+                              mass: mass)
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Center(
+                            child: Viewer(),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 600,
+                              height: 600,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 40, vertical: 30),
+                                  child: ListView(
+                                    scrollDirection: Axis.vertical,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'More Info',
+                                            style: GoogleFonts.nunito(
+                                              fontSize: 40,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black87,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: 300,
+                                        height: 300,
+                                        child: Center(
+                                          child:
+                                              Lottie.asset('assets/info.json'),
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            width: 500,
+                                            child: Text(
+                                              data[widget.atomicnum]['name'] +
+                                                  ' belongs to the group of ' +
+                                                  data[widget.atomicnum]
+                                                      ['groupBlock'] +
+                                                  ' elements.',
+                                              style: GoogleFonts.nunito(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.green,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Atomic Radius : ',
+                                            style: GoogleFonts.nunito(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                          Text(
+                                            data[widget.atomicnum]
+                                                    ['atomicRadius'] +
+                                                ' pm',
+                                            style: GoogleFonts.nunito(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 20),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'Boiling Point : ',
+                                              style: GoogleFonts.nunito(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black54,
+                                              ),
+                                            ),
+                                            Text(
+                                              data[widget.atomicnum]
+                                                      ['boilingPoint'] +
+                                                  ' K',
+                                              style: GoogleFonts.nunito(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Melting Point : ',
+                                            style: GoogleFonts.nunito(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                          Text(
+                                            data[widget.atomicnum]
+                                                    ['meltingPoint'] +
+                                                ' K',
+                                            style: GoogleFonts.nunito(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 20),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'Electronic config : ',
+                                              style: GoogleFonts.nunito(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black54,
+                                              ),
+                                            ),
+                                            Text(
+                                              data[widget.atomicnum]
+                                                  ['electronicConfiguration'],
+                                              style: GoogleFonts.nunito(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Ionisation Energy : ',
+                                            style: GoogleFonts.nunito(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                          Text(
+                                            data[widget.atomicnum]
+                                                    ['ionizationEnergy'] +
+                                                ' joules',
+                                            style: GoogleFonts.nunito(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 20),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'State of matter : ',
+                                              style: GoogleFonts.nunito(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black54,
+                                              ),
+                                            ),
+                                            Text(
+                                              data[widget.atomicnum]
+                                                          ['standardState']
+                                                      .substring(0, 1)
+                                                      .toUpperCase() +
+                                                  data[widget.atomicnum]
+                                                          ['standardState']
+                                                      .substring(1),
+                                              style: GoogleFonts.nunito(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Van der Waals radius : ',
+                                            style: GoogleFonts.nunito(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                          Text(
+                                            data[widget.atomicnum]
+                                                    ['vanDelWaalsRadius'] +
+                                                ' pm',
+                                            style: GoogleFonts.nunito(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 30),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            )
+          : ListView(
               children: [
-                Column(
-                  children: [
-                    Sideinfo(
-                        data: data, atomicnum: widget.atomicnum, mass: mass)
-                  ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_ios_new,
+                          color: Colors.white60,
+                          size: 30,
+                        ),
+                      ),
+                      Text(
+                        data[widget.atomicnum]['name'],
+                        style: GoogleFonts.nunito(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                responsive.width > 760
-                    ? Padding(
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Sideinfo(
+                              data: data,
+                              atomicnum: widget.atomicnum,
+                              mass: mass)
+                        ],
+                      ),
+                      Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: Column(
                           children: [
@@ -79,246 +371,247 @@ class _ElementPageState extends State<ElementPage> {
                             ),
                           ],
                         ),
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.only(right: 20),
-                        child: Column(
-                          children: [
-                            Center(
-                              child: ViewerDesk(),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 80),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: 600,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(30),
+                              topRight: Radius.circular(30),
                             ),
-                          ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: ListView(
+                              scrollDirection: Axis.vertical,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      'More Info',
+                                      style: GoogleFonts.nunito(
+                                        fontSize: 40,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 300,
+                                  height: 300,
+                                  child: Center(
+                                    child: Lottie.asset('assets/info.json'),
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                          1.2,
+                                      child: Text(
+                                        data[widget.atomicnum]['name'] +
+                                            ' belongs to the group of ' +
+                                            data[widget.atomicnum]
+                                                ['groupBlock'] +
+                                            ' elements.',
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.green,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Atomic Radius : ',
+                                      style: GoogleFonts.nunito(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                    Text(
+                                      data[widget.atomicnum]['atomicRadius'] +
+                                          ' pm',
+                                      style: GoogleFonts.nunito(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 20),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Boiling Point : ',
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black54,
+                                        ),
+                                      ),
+                                      Text(
+                                        data[widget.atomicnum]['boilingPoint'] +
+                                            ' K',
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Melting Point : ',
+                                      style: GoogleFonts.nunito(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                    Text(
+                                      data[widget.atomicnum]['meltingPoint'] +
+                                          ' K',
+                                      style: GoogleFonts.nunito(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 20),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Electronic config : ',
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black54,
+                                        ),
+                                      ),
+                                      Text(
+                                        data[widget.atomicnum]
+                                            ['electronicConfiguration'],
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Ionisation Energy : ',
+                                      style: GoogleFonts.nunito(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                    Text(
+                                      data[widget.atomicnum]
+                                              ['ionizationEnergy'] +
+                                          ' joules',
+                                      style: GoogleFonts.nunito(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 20),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'State of matter : ',
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black54,
+                                        ),
+                                      ),
+                                      Text(
+                                        data[widget.atomicnum]['standardState']
+                                                .substring(0, 1)
+                                                .toUpperCase() +
+                                            data[widget.atomicnum]
+                                                    ['standardState']
+                                                .substring(1),
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Van der Waals radius : ',
+                                      style: GoogleFonts.nunito(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                    Text(
+                                      data[widget.atomicnum]
+                                              ['vanDelWaalsRadius'] +
+                                          ' pm',
+                                      style: GoogleFonts.nunito(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 80),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 600,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: ListView(
-                        scrollDirection: Axis.vertical,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                'More Info',
-                                style: GoogleFonts.nunito(
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 300,
-                            height: 300,
-                            child: Center(
-                              child: Lottie.asset('assets/info.json'),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width / 1.2,
-                                child: Text(
-                                  data[widget.atomicnum]['name'] +
-                                      ' belongs to the group of ' +
-                                      data[widget.atomicnum]['groupBlock'] +
-                                      ' elements.',
-                                  style: GoogleFonts.nunito(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'Atomic Radius : ',
-                                style: GoogleFonts.nunito(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black54,
-                                ),
-                              ),
-                              Text(
-                                data[widget.atomicnum]['atomicRadius'] + ' pm',
-                                style: GoogleFonts.nunito(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Boiling Point : ',
-                                  style: GoogleFonts.nunito(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black54,
-                                  ),
-                                ),
-                                Text(
-                                  data[widget.atomicnum]['boilingPoint'] + ' K',
-                                  style: GoogleFonts.nunito(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'Melting Point : ',
-                                style: GoogleFonts.nunito(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black54,
-                                ),
-                              ),
-                              Text(
-                                data[widget.atomicnum]['meltingPoint'] + ' K',
-                                style: GoogleFonts.nunito(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Electronic config : ',
-                                  style: GoogleFonts.nunito(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black54,
-                                  ),
-                                ),
-                                Text(
-                                  data[widget.atomicnum]
-                                      ['electronicConfiguration'],
-                                  style: GoogleFonts.nunito(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'Ionisation Energy : ',
-                                style: GoogleFonts.nunito(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black54,
-                                ),
-                              ),
-                              Text(
-                                data[widget.atomicnum]['ionizationEnergy'] +
-                                    ' joules',
-                                style: GoogleFonts.nunito(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'State of matter : ',
-                                  style: GoogleFonts.nunito(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black54,
-                                  ),
-                                ),
-                                Text(
-                                  data[widget.atomicnum]['standardState']
-                                          .substring(0, 1)
-                                          .toUpperCase() +
-                                      data[widget.atomicnum]['standardState']
-                                          .substring(1),
-                                  style: GoogleFonts.nunito(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'Van der Waals radius : ',
-                                style: GoogleFonts.nunito(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black54,
-                                ),
-                              ),
-                              Text(
-                                data[widget.atomicnum]['vanDelWaalsRadius'] +
-                                    ' pm',
-                                style: GoogleFonts.nunito(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                    ],
                   ),
                 ),
               ],
             ),
-          ),
-        ],
-      ),
     );
   }
 }
@@ -584,96 +877,7 @@ class _ViewerState extends State<Viewer> {
               Cube(
                 onSceneCreated: (Scene scene) {
                   scene.world.add(cube);
-                  scene.camera.zoom = 8;
-                },
-              ),
-              touch == false
-                  ? SizedBox(
-                      width: 200,
-                      height: 30,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Tap and drag to interact',
-                            style: GoogleFonts.nunito(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                  : SizedBox(
-                      width: 10,
-                    ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ViewerDesk extends StatefulWidget {
-  var nu;
-  @override
-  _ViewerState createState() => _ViewerState();
-}
-
-class _ViewerDeskState extends State<Viewer> {
-  Object cube;
-  String symbol;
-  @override
-  void initState() {
-    Period p = new Period();
-    var d = p.period;
-    String symbol;
-
-    setState(() {
-      if (d[number]['symbol'] == 'Ar' ||
-          d[number]['symbol'] == 'Ne' ||
-          d[number]['symbol'] == 'He' ||
-          d[number]['symbol'] == 'Kr' ||
-          d[number]['symbol'] == 'Xe' ||
-          d[number]['symbol'] == 'Rn' ||
-          d[number]['symbol'] == 'Og') {
-        symbol = 'H';
-      } else {
-        symbol = d[number]['symbol'].toString();
-      }
-    });
-    cube = Object(fileName: "assets/Models/$symbol.obj");
-    cube.rotation.setValues(-30, -120, 40);
-    cube.updateTransform();
-
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          touch = true;
-        });
-      },
-      child: SizedBox(
-        width: 350,
-        height: 350,
-        child: Container(
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              SizedBox(width: 200),
-              Cube(
-                onSceneCreated: (Scene scene) {
-                  scene.world.add(cube);
-                  scene.camera.zoom = 8;
+                  scene.camera.zoom = 10;
                 },
               ),
               touch == false
