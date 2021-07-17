@@ -16,7 +16,7 @@ jobs:
       with:
         channel: stable
     - run: flutter config --enable-web
-    - run: flutter build web --release 
+    - run: flutter build web --release --web-renderer html
 
     - name: Deploy to Netlify
       uses: nwtgck/actions-netlify@v1.1
