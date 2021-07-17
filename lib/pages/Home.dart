@@ -27,18 +27,21 @@ final len = ValueNotifier<int>(0);
 
 class _HomePageState extends State<HomePage> {
   getfacts() async {
-    String url = 'https://elementalapi.herokuapp.com/api/v2/';
+    String url = 'https://elementalapi.shanwillpinto.tech/facts';
     var info = await http.get(Uri.parse(url));
 
     f = json.decode(info.body);
-    for (int i = 0; i < f['Element_data'].length; i++) {
-      factlist.add(f['Element_data'][i]['info']);
-      linklist.add(f['Element_data'][i]['content']);
+    print(f);
+    for (int i = 0; i < f.length; i++) {
+      factlist.add(f[i]['fact']);
+      linklist.add(f[i]['link']);
       factlist = factlist.reversed.toList();
       linklist = linklist.reversed.toList();
     }
+    print(factlist);
+    print(linklist);
     setState(() {
-      len.value = f['Element_data'].length;
+      len.value = f.length;
     });
   }
 
