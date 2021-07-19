@@ -57,7 +57,7 @@ class _AboutState extends State<About> {
                           child: CircleAvatar(
                             radius: 130,
                             backgroundImage: AssetImage(
-                              'assets/images/sh.jpg',
+                              'assets/images/sh.png',
                             ),
                           ),
                         ),
@@ -445,7 +445,7 @@ class _AboutState extends State<About> {
                             radius: 50,
                             child: ClipOval(
                               child: Image.asset(
-                                'assets/images/sh.jpg',
+                                'assets/images/sh.png',
                                 fit: BoxFit.fill,
                               ),
                             ),
