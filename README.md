@@ -39,6 +39,7 @@ https://user-images.githubusercontent.com/62848565/124614909-5e15a380-de92-11eb-
 [![githubactions](https://img.shields.io/badge/GitHub%20Actions-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/features/actions)
 
 <br>
+
 ## How it all began
 
 It all started with a small idea to provide students a visual aid to know the elements. The logo is inspired from the structure of an atom. The app aims to get students closer to the elements by giving them an upclose view of all the 118 elements of the periodic table. 
