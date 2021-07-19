@@ -28,15 +28,15 @@ https://user-images.githubusercontent.com/62848565/124614909-5e15a380-de92-11eb-
 <br>
 
 ## Tech Stack
-![flutter](https://img.shields.io/badge/Flutter-blue?style=for-the-badge&logo=flutter)
-![node](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
-![express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
-![mongo](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+[![flutter](https://img.shields.io/badge/Flutter-blue?style=for-the-badge&logo=flutter)](https://flutter.dev/)
+[![node](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/)
+[![express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)](https://expressjs.com/)
+[![mongo](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 <br>
 
 ## Deployed using
-![netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
-![githubactions](https://img.shields.io/badge/GitHub%20Actions-100000?style=for-the-badge&logo=github&logoColor=white)
+[![netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://www.netlify.com/)
+[![githubactions](https://img.shields.io/badge/GitHub%20Actions-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/features/actions)
 
 <br>
 ## How it all began
