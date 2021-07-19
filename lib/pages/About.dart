@@ -586,6 +586,7 @@ class _AboutState extends State<About> {
                   height: 30,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
