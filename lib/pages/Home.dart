@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
 
   getdata() async {
     String url =
-        'https://api.waqi.info/feed/india/?token=e174d708b34e40a42ab4c5b195eec0e370810db5';
+        'https://elementalapi.shanwillpinto.tech/aqi';
     var data = await http.get(Uri.parse(url));
 
     facts = json.decode(data.body);
