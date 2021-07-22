@@ -1,4 +1,4 @@
-package com.example.elemental
+package io.shanwill.elemental
 
 import io.flutter.embedding.android.FlutterActivity
 

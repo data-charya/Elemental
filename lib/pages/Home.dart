@@ -43,8 +43,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   getdata() async {
-    String url =
-        'https://elementalapi.shanwillpinto.tech/aqi';
+    String url = 'https://elementalapi.shanwillpinto.tech/aqi';
     var data = await http.get(Uri.parse(url));
 
     facts = json.decode(data.body);
