@@ -12,6 +12,7 @@
 ![flutter](https://img.shields.io/badge/Flutter%20ver.-2.2.2-blue?style=for-the-badge&logo=flutter)
 [![website](https://img.shields.io/badge/Website-online-green?style=for-the-badge&logo=chrome)](https://elemental3d.shanwillpinto.tech)
 [![GitHub license](https://img.shields.io/badge/license-MIT-red.svg?style=for-the-badge)](https://github.com/data-charya/Elemental/blob/master/LICENSE)
+[![Google Play](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://play.google.com/store/apps/details?id=io.shanwill.elemental)
 [![Flutter action](https://github.com/data-charya/Elemental/actions/workflows/flutter.yml/badge.svg?style=for-the-badge?branch=master)](https://github.com/data-charya/Elemental/actions/workflows/flutter.yml)
 
 </div>
