@@ -27,7 +27,7 @@ final len = ValueNotifier<int>(0);
 
 class _HomePageState extends State<HomePage> {
   getfacts() async {
-    String url = 'https://elementalapi.shanwillpinto.tech/facts';
+    String url = 'https://elementalapi.shanwillpinto.ml/facts';
     var info = await http.get(Uri.parse(url));
 
     f = json.decode(info.body);
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   getdata() async {
-    String url = 'https://elementalapi.shanwillpinto.tech/aqi';
+    String url = 'https://elementalapi.shanwillpinto.ml/aqi';
     var data = await http.get(Uri.parse(url));
 
     facts = json.decode(data.body);
