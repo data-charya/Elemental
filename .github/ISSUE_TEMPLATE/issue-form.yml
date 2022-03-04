@@ -1,0 +1,36 @@
+name: Feature Request
+description: Suggest an idea for this project
+title: "[Feature Request]: "
+labels: ["Elemental 3D"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to make an issue!
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Enter a brief description
+      placeholder: Please include a summary. Please also include relevant motivation and context. 
+      value: "Description"
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Domain
+      description: Select domain of contribution
+      options:
+        - Documentation
+        - Android (Flutter)
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/data-charya/Elemental/blob/master/CODE_OF_CONDUCT.md)
+      options:
+        - label: I follow [Code of Conduct](https://github.com/data-charya/Elemental/blob/master/CODE_OF_CONDUCT.md) of this project.
+          required: true
