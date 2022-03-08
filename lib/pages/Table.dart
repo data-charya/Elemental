@@ -54,7 +54,7 @@ class _ElementsState extends State<Elements> {
                   color: Color.fromRGBO(24, 24, 24, 1),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 30),
+                        horizontal: 20),
                     child: responsive.width > 720
                         ? GridView.count(
                             crossAxisCount: 4,
