@@ -32,8 +32,10 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    print(size.width);
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(16, 16, 16, 1),
       body: size.width > 760
           ? Padding(
@@ -721,78 +723,81 @@ class _SearchPageState extends State<SearchPage> {
                 ],
               ),
             )
-          : Column(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height / 5,
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.only(top: 80, left: 20, right: 30),
-                        child: TextField(
-                          onChanged: (_filter) {
-                            if (_filter.length == 0) {
-                              setState(() {
-                                showbutton = false;
-                                _filter = '';
-                              });
-                            } else {
-                              setState(() {
-                                showbutton = true;
-                                _getNames(_filter.toLowerCase());
-                              });
-                            }
-                          },
-                          controller: _filter,
-                          style: GoogleFonts.nunito(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.black45),
-                          decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
+          : SingleChildScrollView(
+            physics: ClampingScrollPhysics(),
+            child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height / 5,
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.only(top: 80, left: 20, right: 30),
+                          child: TextField(
+                            onChanged: (_filter) {
+                              if (_filter.length == 0) {
+                                setState(() {
+                                  showbutton = false;
+                                  _filter = '';
+                                });
+                              } else {
+                                setState(() {
+                                  showbutton = true;
+                                  _getNames(_filter.toLowerCase());
+                                });
+                              }
+                            },
+                            controller: _filter,
+                            style: GoogleFonts.nunito(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.black45),
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              hintText: 'Search element ..',
+                              hintStyle: GoogleFonts.nunito(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.black54,
+                              ),
+                              suffixIcon: showbutton == false
+                                  ? Icon(Icons.search)
+                                  : IconButton(
+                                      icon: Icon(Icons.cancel),
+                                      onPressed: () {
+                                        setState(() {
+                                          _filter.clear();
+                                          showbutton = false;
+                                          show = false;
+                                          found = false;
+                                        });
+                                      },
+                                    ),
                             ),
-                            hintText: 'Search element ..',
-                            hintStyle: GoogleFonts.nunito(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.black54,
-                            ),
-                            suffixIcon: showbutton == false
-                                ? Icon(Icons.search)
-                                : IconButton(
-                                    icon: Icon(Icons.cancel),
-                                    onPressed: () {
-                                      setState(() {
-                                        _filter.clear();
-                                        showbutton = false;
-                                        show = false;
-                                        found = false;
-                                      });
-                                    },
-                                  ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height / 1.4,
-                      child: showscreen(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        child: showscreen(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+          ),
     );
   }
 

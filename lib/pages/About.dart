@@ -72,68 +72,65 @@ class _AboutState extends State<About> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 30),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "Hey I'm ",
-                                        style: GoogleFonts.nunito(
-                                          fontSize: 30,
-                                          color: Colors.black,
-                                        ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // SizedBox(
+                              //   height: 20,
+                              // ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Hey I'm ",
+                                      style: GoogleFonts.nunito(
+                                        fontSize: 30,
+                                        color: Colors.black,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 2),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "Shanwill Pinto",
-                                        style: GoogleFonts.nunito(
-                                          fontSize: 30,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                        ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 2),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "Shanwill Pinto",
+                                      style: GoogleFonts.nunito(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 2),
-                                  child: Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 200,
-                                        child: Container(
-                                          child: Text(
-                                            "I'm a flutter dev from Mangalore, India",
-                                            style: GoogleFonts.nunito(
-                                              fontSize: 25,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.teal[700],
-                                            ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 2),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 200,
+                                      child: Container(
+                                        child: Text(
+                                          "I'm a flutter dev from Mangalore, India",
+                                          style: GoogleFonts.nunito(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.teal[700],
                                           ),
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

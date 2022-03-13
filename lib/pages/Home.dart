@@ -443,147 +443,147 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      ValueListenableBuilder(
-                        valueListenable: len,
-                        builder: (context, value, widget) {
-                          if (len.value == 0) {
-                            return Center(
-                              child: SizedBox(
-                                width: 200,
-                                height: 200,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height: 80,
-                                        width: 80,
-                                        child:
-                                            Lottie.asset('assets/loading.json'),
-                                      ),
-                                      Text(
-                                        'Loading',
-                                        style: GoogleFonts.nunito(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.black45,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          } else {
-                            return Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 30, left: 30, right: 30),
-                              child: SizedBox(
-                                width: MediaQuery.of(context).size.width * .35,
-                                height: 600,
-                                child: ListView.builder(
-                                    itemCount: factlist.length,
-                                    itemBuilder: (context, index) {
-                                      return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 10, horizontal: 10),
-                                        child: SizedBox(
-                                          width: 300,
-                                          height: 200,
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 15),
-                                                  child: SizedBox(
-                                                    width: 140,
-                                                    child: Text(
-                                                      factlist[index],
-                                                      style: GoogleFonts.nunito(
-                                                        fontSize: 15,
-                                                        fontWeight:
-                                                            FontWeight.w800,
-                                                        color: Colors.black54,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 20),
-                                                  child: SizedBox(
-                                                    width: 160,
-                                                    height: 160,
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20),
-                                                        border: Border.all(
-                                                            color: Colors.blue,
-                                                            width: 5),
-                                                        color: Colors.black,
-                                                      ),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(15),
-                                                        child: Image.network(
-                                                          linklist[index],
-                                                          loadingBuilder:
-                                                              (BuildContext
-                                                                      context,
-                                                                  Widget child,
-                                                                  ImageChunkEvent
-                                                                      loadingProgress) {
-                                                            if (loadingProgress ==
-                                                                null)
-                                                              return child;
-                                                            return Center(
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                value: loadingProgress
-                                                                            .expectedTotalBytes !=
-                                                                        null
-                                                                    ? loadingProgress
-                                                                            .cumulativeBytesLoaded /
-                                                                        loadingProgress
-                                                                            .expectedTotalBytes
-                                                                    : null,
-                                                              ),
-                                                            );
-                                                          },
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }),
-                              ),
-                            );
-                          }
-                        },
-                      ),
+                      // ValueListenableBuilder(
+                      //   valueListenable: len,
+                      //   builder: (context, value, widget) {
+                      //     if (len.value == 0) {
+                      //       return Center(
+                      //         child: SizedBox(
+                      //           width: 200,
+                      //           height: 200,
+                      //           child: Container(
+                      //             decoration: BoxDecoration(
+                      //               color: Colors.white,
+                      //               borderRadius: BorderRadius.circular(20),
+                      //             ),
+                      //             child: Column(
+                      //               mainAxisAlignment: MainAxisAlignment.center,
+                      //               children: [
+                      //                 SizedBox(
+                      //                   height: 80,
+                      //                   width: 80,
+                      //                   child:
+                      //                       Lottie.asset('assets/loading.json'),
+                      //                 ),
+                      //                 Text(
+                      //                   'Loading',
+                      //                   style: GoogleFonts.nunito(
+                      //                     fontSize: 20,
+                      //                     fontWeight: FontWeight.w600,
+                      //                     color: Colors.black45,
+                      //                   ),
+                      //                 ),
+                      //               ],
+                      //             ),
+                      //           ),
+                      //         ),
+                      //       );
+                      //     } else {
+                      //       return Padding(
+                      //         padding: const EdgeInsets.only(
+                      //             bottom: 30, left: 30, right: 30),
+                      //         child: SizedBox(
+                      //           width: MediaQuery.of(context).size.width * .35,
+                      //           height: 600,
+                      //           child: ListView.builder(
+                      //               itemCount: factlist.length,
+                      //               itemBuilder: (context, index) {
+                      //                 return Padding(
+                      //                   padding: const EdgeInsets.symmetric(
+                      //                       vertical: 10, horizontal: 10),
+                      //                   child: SizedBox(
+                      //                     width: 300,
+                      //                     height: 200,
+                      //                     child: Container(
+                      //                       decoration: BoxDecoration(
+                      //                         color: Colors.white,
+                      //                         borderRadius:
+                      //                             BorderRadius.circular(20),
+                      //                       ),
+                      //                       child: Row(
+                      //                         mainAxisAlignment:
+                      //                             MainAxisAlignment
+                      //                                 .spaceBetween,
+                      //                         children: [
+                      //                           Padding(
+                      //                             padding: const EdgeInsets
+                      //                                     .symmetric(
+                      //                                 horizontal: 15),
+                      //                             child: SizedBox(
+                      //                               width: 140,
+                      //                               child: Text(
+                      //                                 factlist[index],
+                      //                                 style: GoogleFonts.nunito(
+                      //                                   fontSize: 15,
+                      //                                   fontWeight:
+                      //                                       FontWeight.w800,
+                      //                                   color: Colors.black54,
+                      //                                 ),
+                      //                               ),
+                      //                             ),
+                      //                           ),
+                      //                           Padding(
+                      //                             padding: const EdgeInsets
+                      //                                     .symmetric(
+                      //                                 horizontal: 20),
+                      //                             child: SizedBox(
+                      //                               width: 160,
+                      //                               height: 160,
+                      //                               child: Container(
+                      //                                 decoration: BoxDecoration(
+                      //                                   borderRadius:
+                      //                                       BorderRadius
+                      //                                           .circular(20),
+                      //                                   border: Border.all(
+                      //                                       color: Colors.blue,
+                      //                                       width: 5),
+                      //                                   color: Colors.black,
+                      //                                 ),
+                      //                                 child: ClipRRect(
+                      //                                   borderRadius:
+                      //                                       BorderRadius
+                      //                                           .circular(15),
+                      //                                   child: Image.network(
+                      //                                     linklist[index],
+                      //                                     loadingBuilder:
+                      //                                         (BuildContext
+                      //                                                 context,
+                      //                                             Widget child,
+                      //                                             ImageChunkEvent
+                      //                                                 loadingProgress) {
+                      //                                       if (loadingProgress ==
+                      //                                           null)
+                      //                                         return child;
+                      //                                       return Center(
+                      //                                         child:
+                      //                                             CircularProgressIndicator(
+                      //                                           value: loadingProgress
+                      //                                                       .expectedTotalBytes !=
+                      //                                                   null
+                      //                                               ? loadingProgress
+                      //                                                       .cumulativeBytesLoaded /
+                      //                                                   loadingProgress
+                      //                                                       .expectedTotalBytes
+                      //                                               : null,
+                      //                                         ),
+                      //                                       );
+                      //                                     },
+                      //                                   ),
+                      //                                 ),
+                      //                               ),
+                      //                             ),
+                      //                           ),
+                      //                         ],
+                      //                       ),
+                      //                     ),
+                      //                   ),
+                      //                 );
+                      //               }),
+                      //         ),
+                      //       );
+                      //     }
+                      //   },
+                      // ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * .4,
                         height: 400,
@@ -734,31 +734,31 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
-                                width: 100,
-                                height: 100,
-                                child: LiquidCircularProgressIndicator(
-                                  value: aqiperc, // Defaults to 0.5.
-                                  valueColor: AlwaysStoppedAnimation(
-                                      _color), // Defaults to the current Theme's accentColor.
-                                  backgroundColor: Colors.grey[
-                                      850], // Defaults to the current Theme's backgroundColor.
-                                  borderColor: aqistatus == true
-                                      ? border
-                                      : border = Color.fromRGBO(39, 174, 96, 1),
-                                  borderWidth: 5.0,
-                                  direction: Axis
-                                      .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-                                  center: Text(
-                                    aqi.toString(),
-                                    style: GoogleFonts.nunito(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w800,
-                                      color: Colors.white70,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              // SizedBox(
+                              //   width: 100,
+                              //   height: 100,
+                              //   child: LiquidCircularProgressIndicator(
+                              //     value: aqiperc, // Defaults to 0.5.
+                              //     valueColor: AlwaysStoppedAnimation(
+                              //         _color), // Defaults to the current Theme's accentColor.
+                              //     backgroundColor: Colors.grey[
+                              //         850], // Defaults to the current Theme's backgroundColor.
+                              //     borderColor: aqistatus == true
+                              //         ? border
+                              //         : border = Color.fromRGBO(39, 174, 96, 1),
+                              //     borderWidth: 5.0,
+                              //     direction: Axis
+                              //         .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+                              //     center: Text(
+                              //       aqi.toString(),
+                              //       style: GoogleFonts.nunito(
+                              //         fontSize: 20,
+                              //         fontWeight: FontWeight.w800,
+                              //         color: Colors.white70,
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -990,136 +990,136 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                ValueListenableBuilder(
-                  valueListenable: len,
-                  builder: (context, value, widget) {
-                    if (len.value == 0) {
-                      return Center(
-                        child: SizedBox(
-                          width: 200,
-                          height: 200,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  height: 80,
-                                  width: 80,
-                                  child: Lottie.asset('assets/loading.json'),
-                                ),
-                                Text(
-                                  'Loading',
-                                  style: GoogleFonts.nunito(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.black45,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    } else {
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 30),
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          height: 600,
-                          child: ListView.builder(
-                              itemCount: factlist.length,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 10),
-                                  child: SizedBox(
-                                    width: 300,
-                                    height: 200,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 15),
-                                            child: SizedBox(
-                                              width: 140,
-                                              child: Text(
-                                                factlist[index],
-                                                style: GoogleFonts.nunito(
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w800,
-                                                  color: Colors.black54,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 20),
-                                            child: SizedBox(
-                                              width: 160,
-                                              height: 160,
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  border: Border.all(
-                                                      color: Colors.blue,
-                                                      width: 5),
-                                                  color: Colors.black,
-                                                ),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
-                                                  child: Image.network(
-                                                    linklist[index],
-                                                    loadingBuilder: (BuildContext
-                                                            context,
-                                                        Widget child,
-                                                        ImageChunkEvent
-                                                            loadingProgress) {
-                                                      if (loadingProgress ==
-                                                          null) return child;
-                                                      return Center(
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          value: loadingProgress
-                                                                      .expectedTotalBytes !=
-                                                                  null
-                                                              ? loadingProgress
-                                                                      .cumulativeBytesLoaded /
-                                                                  loadingProgress
-                                                                      .expectedTotalBytes
-                                                              : null,
-                                                        ),
-                                                      );
-                                                    },
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }),
-                        ),
-                      );
-                    }
-                  },
-                ),
+                // ValueListenableBuilder(
+                //   valueListenable: len,
+                //   builder: (context, value, widget) {
+                //     if (len.value == 0) {
+                //       return Center(
+                //         child: SizedBox(
+                //           width: 200,
+                //           height: 200,
+                //           child: Container(
+                //             decoration: BoxDecoration(
+                //               color: Colors.white,
+                //               borderRadius: BorderRadius.circular(20),
+                //             ),
+                //             child: Column(
+                //               mainAxisAlignment: MainAxisAlignment.center,
+                //               children: [
+                //                 SizedBox(
+                //                   height: 80,
+                //                   width: 80,
+                //                   child: Lottie.asset('assets/loading.json'),
+                //                 ),
+                //                 Text(
+                //                   'Loading',
+                //                   style: GoogleFonts.nunito(
+                //                     fontSize: 20,
+                //                     fontWeight: FontWeight.w600,
+                //                     color: Colors.black45,
+                //                   ),
+                //                 ),
+                //               ],
+                //             ),
+                //           ),
+                //         ),
+                //       );
+                //     } else {
+                //       return Padding(
+                //         padding: const EdgeInsets.only(bottom: 30),
+                //         child: SizedBox(
+                //           width: MediaQuery.of(context).size.width,
+                //           height: 600,
+                //           child: ListView.builder(
+                //               itemCount: factlist.length,
+                //               itemBuilder: (context, index) {
+                //                 return Padding(
+                //                   padding: const EdgeInsets.symmetric(
+                //                       vertical: 10, horizontal: 10),
+                //                   child: SizedBox(
+                //                     width: 300,
+                //                     height: 200,
+                //                     child: Container(
+                //                       decoration: BoxDecoration(
+                //                         color: Colors.white,
+                //                         borderRadius: BorderRadius.circular(20),
+                //                       ),
+                //                       child: Row(
+                //                         mainAxisAlignment:
+                //                             MainAxisAlignment.spaceBetween,
+                //                         children: [
+                //                           Padding(
+                //                             padding: const EdgeInsets.symmetric(
+                //                                 horizontal: 15),
+                //                             child: SizedBox(
+                //                               width: 140,
+                //                               child: Text(
+                //                                 factlist[index],
+                //                                 style: GoogleFonts.nunito(
+                //                                   fontSize: 15,
+                //                                   fontWeight: FontWeight.w800,
+                //                                   color: Colors.black54,
+                //                                 ),
+                //                               ),
+                //                             ),
+                //                           ),
+                //                           Padding(
+                //                             padding: const EdgeInsets.symmetric(
+                //                                 horizontal: 20),
+                //                             child: SizedBox(
+                //                               width: 160,
+                //                               height: 160,
+                //                               child: Container(
+                //                                 decoration: BoxDecoration(
+                //                                   borderRadius:
+                //                                       BorderRadius.circular(20),
+                //                                   border: Border.all(
+                //                                       color: Colors.blue,
+                //                                       width: 5),
+                //                                   color: Colors.black,
+                //                                 ),
+                //                                 child: ClipRRect(
+                //                                   borderRadius:
+                //                                       BorderRadius.circular(15),
+                //                                   child: Image.network(
+                //                                     linklist[index],
+                //                                     loadingBuilder: (BuildContext
+                //                                             context,
+                //                                         Widget child,
+                //                                         ImageChunkEvent
+                //                                             loadingProgress) {
+                //                                       if (loadingProgress ==
+                //                                           null) return child;
+                //                                       return Center(
+                //                                         child:
+                //                                             CircularProgressIndicator(
+                //                                           value: loadingProgress
+                //                                                       .expectedTotalBytes !=
+                //                                                   null
+                //                                               ? loadingProgress
+                //                                                       .cumulativeBytesLoaded /
+                //                                                   loadingProgress
+                //                                                       .expectedTotalBytes
+                //                                               : null,
+                //                                         ),
+                //                                       );
+                //                                     },
+                //                                   ),
+                //                                 ),
+                //                               ),
+                //                             ),
+                //                           ),
+                //                         ],
+                //                       ),
+                //                     ),
+                //                   ),
+                //                 );
+                //               }),
+                //         ),
+                //       );
+                //     }
+                //   },
+                // ),
               ],
             ),
     );
