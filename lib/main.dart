@@ -1,5 +1,5 @@
-import 'package:elemental/Components/scroll_behaviour.dart';
-import 'package:elemental/pages/Splash.dart';
+import 'package:elemental/components/scroll_behaviour.dart';
+import 'package:elemental/pages/splash.dart';
 import 'package:flutter/material.dart';
 
 void main() {

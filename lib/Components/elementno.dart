@@ -1,4 +1,4 @@
-class elementno {
+class Elementno {
   Map element = {
     "Hydrogen": '1',
     "Helium": '2',

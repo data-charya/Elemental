@@ -1,4 +1,4 @@
-import 'package:elemental/pages/Nav.dart';
+import 'package:elemental/pages/nav.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';

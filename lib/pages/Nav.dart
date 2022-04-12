@@ -1,7 +1,7 @@
-import 'package:elemental/pages/About.dart';
-import 'package:elemental/pages/Home.dart';
-import 'package:elemental/pages/Search.dart';
-import 'package:elemental/pages/Table.dart';
+import 'package:elemental/pages/about.dart';
+import 'package:elemental/pages/home.dart';
+import 'package:elemental/pages/search.dart';
+import 'package:elemental/pages/table.dart';
 import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 

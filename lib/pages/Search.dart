@@ -1,6 +1,6 @@
-import 'package:elemental/Components/Data.dart';
-import 'package:elemental/Components/elementno.dart';
-import 'package:elemental/pages/Element.dart';
+import 'package:elemental/components/data.dart';
+import 'package:elemental/components/elementno.dart';
+import 'package:elemental/pages/element.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -856,7 +856,7 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget _buildlist() {
     int atnum;
-    elementno elno = elementno();
+    Elementno elno = Elementno();
     var n = elno.element;
     return ListView.builder(
       key: UniqueKey(),

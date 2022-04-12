@@ -1,7 +1,7 @@
-import 'package:elemental/pages/Element.dart';
+import 'package:elemental/pages/element.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:elemental/Components/Data.dart';
+import 'package:elemental/components/data.dart';
 import 'package:random_color/random_color.dart';
 
 class TablePage extends StatefulWidget {
@@ -53,8 +53,7 @@ class _ElementsState extends State<Elements> {
                   height: MediaQuery.of(context).size.height,
                   color: Color.fromRGBO(24, 24, 24, 1),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: responsive.width > 720
                         ? GridView.count(
                             crossAxisCount: 4,
