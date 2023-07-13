@@ -1,5 +1,4 @@
 import 'package:elemental/pages/About.dart';
-import 'package:elemental/pages/Home.dart';
 import 'package:elemental/pages/Search.dart';
 import 'package:elemental/pages/Table.dart';
 import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
@@ -11,11 +10,11 @@ class NavPage extends StatefulWidget {
 }
 
 class _NavPageState extends State<NavPage> {
-  Widget _child;
+  late Widget _child;
 
   @override
   void initState() {
-    _child = HomePage();
+    _child = TablePage();
     super.initState();
   }
 
@@ -33,7 +32,6 @@ class _NavPageState extends State<NavPage> {
           iconUnselectedForegroundColor: Color.fromRGBO(16, 16, 16, 1),
         ),
         icons: [
-          FluidNavBarIcon(icon: Icons.home),
           FluidNavBarIcon(icon: Icons.search),
           FluidNavBarIcon(icon: Icons.stream),
           FluidNavBarIcon(icon: Icons.code_rounded),
@@ -47,15 +45,12 @@ class _NavPageState extends State<NavPage> {
     setState(() {
       switch (index) {
         case 0:
-          _child = HomePage();
+          _child = TablePage();
           break;
         case 1:
           _child = SearchPage();
           break;
         case 2:
-          _child = TablePage();
-          break;
-        case 3:
           _child = About();
           break;
       }

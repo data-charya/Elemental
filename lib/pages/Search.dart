@@ -17,7 +17,7 @@ TextEditingController _filter = new TextEditingController();
 
 class _SearchPageState extends State<SearchPage> {
   List names = [];
-  List filteredNames;
+  late List filteredNames;
   List res = [];
   @override
   void initState() {
@@ -724,8 +724,8 @@ class _SearchPageState extends State<SearchPage> {
               ),
             )
           : SingleChildScrollView(
-            physics: ClampingScrollPhysics(),
-            child: Column(
+              physics: ClampingScrollPhysics(),
+              child: Column(
                 children: [
                   Row(
                     children: [
@@ -733,8 +733,8 @@ class _SearchPageState extends State<SearchPage> {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height / 5,
                         child: Padding(
-                          padding:
-                              const EdgeInsets.only(top: 80, left: 20, right: 30),
+                          padding: const EdgeInsets.only(
+                              top: 80, left: 20, right: 30),
                           child: TextField(
                             onChanged: (_filter) {
                               if (_filter.length == 0) {
@@ -797,7 +797,7 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                 ],
               ),
-          ),
+            ),
     );
   }
 
@@ -944,7 +944,7 @@ class _SearchPageState extends State<SearchPage> {
 
 class Search_something extends StatelessWidget {
   const Search_something({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

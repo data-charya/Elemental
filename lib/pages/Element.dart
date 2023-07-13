@@ -6,7 +6,7 @@ import 'package:lottie/lottie.dart';
 
 class ElementPage extends StatefulWidget {
   final int atomicnum;
-  const ElementPage({Key key, @required this.atomicnum}) : super(key: key);
+  const ElementPage({Key? key, required this.atomicnum}) : super(key: key);
 
   @override
   _ElementPageState createState() => _ElementPageState();
@@ -618,10 +618,10 @@ class _ElementPageState extends State<ElementPage> {
 
 class Sideinfo extends StatelessWidget {
   const Sideinfo({
-    Key key,
-    @required this.data,
-    @required this.atomicnum,
-    @required this.mass,
+    Key? key,
+    required this.data,
+    required this.atomicnum,
+    required this.mass,
   }) : super(key: key);
 
   final List data;
@@ -830,13 +830,13 @@ class Viewer extends StatefulWidget {
 }
 
 class _ViewerState extends State<Viewer> {
-  Object cube;
-  String symbol;
+  late Object cube;
+  late String symbol;
   @override
   void initState() {
     Period p = new Period();
     var d = p.period;
-    String symbol;
+    String symbol = '';
 
     setState(() {
       if (d[number]['symbol'] == 'Ar' ||
